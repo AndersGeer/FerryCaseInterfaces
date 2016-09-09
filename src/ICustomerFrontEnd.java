@@ -13,24 +13,32 @@ public interface ICustomerFrontEnd
      */
     Collection<IDateFerryDTO> CreateReservation();
 
-    //Gets info of ferry line and date chosen
-    //Returns list of times for selected ferry line and dates
     /**
-     * @param       A DTO with the ferry line and date chosen.
-     * @return      A collection of IDateFerryDTO items, consisting of ferry lines and dates
+     * @param  chosenFerryAndTime   A DTO with the ferry line and date chosen
+     * @return                      A collection of IDateFerryDTO items, consisting of times for the selected ferry time and date
      */
     Collection<ILineDateTimesDTO> FerryAndDate(IFerryChosenDTO chosenFerryAndTime);
 
-    //Gets info of time selection
+    //
+    /**
+     * @param  timeSelection   Gets info of time selection
+     */
     void SelectedTime(ISelectedTimeDTO timeSelection);
 
-    //Gets information on customer
-    //Returns a complete information regarding the resavation made by the customer
+    /**
+     * @param  customer   A DTO with with customer info - possibly encrypted
+     * @return            A reservationDTO
+     */
     ReservationDTO SubmitInformation(CustomerInfoDTO customer);
 
-    //Customer confirms infomation
+    /**
+     * Allows customer to confirm the information without changes
+     */
     void ConfirmedInfo();
 
-    //In case the entered info is wrong, customer submits changed info - this is it.
+    /**
+     * Allows customer to change info if needed
+     * @param  customer   A DTO with with customer info - possibly encrypted
+     */
     void InformationChanged(ReservationDTO changedInfo);
 }
